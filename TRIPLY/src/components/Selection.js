@@ -27,6 +27,10 @@ const SelectionBlock = styled.div`
   height: 300px;
   background-color: #f7f5f2;
   color: black;
+  .info {
+    margin-top: 40px;
+    font-size: 14px;
+  }
   .start {
     border-right: 1px solid #dfdfde;
     border-radius: 15px 0 0 15px;
@@ -56,13 +60,33 @@ const Selection = () => {
   const [start, setStart] = React.useState({});
   const [end, setEnd] = React.useState({});
 
+  const checkDay = (daytmp) => {
+    switch (daytmp) {
+      case 0:
+        return "monday";
+      case 1:
+        return "tuesday";
+      case 2:
+        return "wednesday";
+      case 3:
+        return "thursday";
+      case 4:
+        return "friday";
+      case 5:
+        return "saturday";
+      case 6:
+        return "sunday";
+    }
+  };
   const handleStart = (e) => {
     const date = e._d.getDate();
     const hour = e._d.getHours();
     const min = e._d.getMinutes();
     const year = e._d.getFullYear();
     const month = e._d.getMonth();
-    const day = e._d.getDay(); //요일
+    const daytmp = e._d.getDay(); //요일
+
+    let day = checkDay(daytmp);
 
     setStart({
       year: year,
@@ -81,7 +105,8 @@ const Selection = () => {
     const min = e._d.getMinutes();
     const year = e._d.getFullYear();
     const month = e._d.getMonth();
-    const day = e._d.getDay(); //요일
+    const daytmp = e._d.getDay(); //요일
+    let day = checkDay(daytmp);
 
     setEnd({
       year: year,
@@ -110,6 +135,18 @@ const Selection = () => {
                   onChange={handleStart}
                 />
               </FormGroup>
+              {start.year == null ? (
+                <></>
+              ) : (
+                <div className="info">
+                  {start.year}-{start.month}-{start.date}
+                  <br />
+                  {start.day}
+                  <br />
+                  {start.hour}:{start.min}
+                  <br />
+                </div>
+              )}
             </div>
           </Col>
         </Row>
@@ -122,10 +159,22 @@ const Selection = () => {
               <FormGroup>
                 <Datetime
                   timeFormat={false}
-                  inputProps={{ placeholder: "Datetime Picker Here" }}
+                  inputProps={{ placeholder: "도착날짜를 선택해주세요" }}
                   onChange={handleEnd}
                 />
               </FormGroup>
+              {end.year == null ? (
+                <></>
+              ) : (
+                <div className="info">
+                  {end.year}-{end.month}-{end.date}
+                  <br />
+                  {end.day}
+                  <br />
+                  {end.hour}:{end.min}
+                  <br />
+                </div>
+              )}
             </div>
           </Col>
         </Row>

@@ -19,6 +19,7 @@ import {
 // core components
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 import TransparentFooter from "components/Footers/TransparentFooter.js";
+import { Link } from "react-router-dom";
 
 function LoginPage() {
   const [firstFocus, setFirstFocus] = React.useState(false);
@@ -109,16 +110,16 @@ function LoginPage() {
                     </Button>
                     <div className="pull-left">
                       <h6>
-                        <a
+                        <Link
+                          to="/signup"
                           className="link"
-                          href="#pablo"
                           onClick={(e) => e.preventDefault()}
                         >
-                          Create Account
-                        </a>
+                          회원가입
+                        </Link>
                       </h6>
                     </div>
-                    <div className="pull-right">
+                    {/* <div className="pull-right">
                       <h6>
                         <a
                           className="link"
@@ -128,7 +129,7 @@ function LoginPage() {
                           Need Help?
                         </a>
                       </h6>
-                    </div>
+                    </div> */}
                   </CardFooter>
                 </Form>
               </Card>

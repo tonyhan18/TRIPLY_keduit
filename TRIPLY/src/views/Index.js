@@ -21,7 +21,6 @@ import Javascript from "./index-sections/Javascript.js";
 import Carousel from "./index-sections/Carousel.js";
 import NucleoIcons from "./index-sections/NucleoIcons.js";
 import CompleteExamples from "./index-sections/CompleteExamples.js";
-import SignUp from "./index-sections/SignUp.js";
 import Examples from "./index-sections/Examples.js";
 import Download from "./index-sections/Download.js";
 
@@ -44,19 +43,19 @@ function Index() {
         <IndexHeader />
         <div className="main">
           {/* <Images /> */}
-          <BasicElements />
+          {/* <BasicElements /> */}
           <Navbars />
-          <Tabs />
+          {/* <Tabs />
           <Pagination />
-          <Notifications />
-          <Typography />
+          <Notifications /> */}
+          {/* <Typography />
           <Javascript />
           <Carousel />
           <NucleoIcons />
-          <CompleteExamples />
-          <SignUp />
-          <Examples />
-          <Download />
+          <CompleteExamples /> */}
+          {/* <SignUp /> */}
+          {/* <Examples />
+          <Download /> */}
         </div>
         <DarkFooter />
       </div>

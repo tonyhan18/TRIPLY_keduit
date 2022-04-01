@@ -122,7 +122,7 @@ function IndexNavbar() {
                 <Button
                   className="nav-link btn-neutral"
                   color="info"
-                  href="login-page"
+                  href="login"
                   id="upgrade-to-pro"
                 >
                   <i className="now-ui-icons objects_key-25 mr-1"></i>
