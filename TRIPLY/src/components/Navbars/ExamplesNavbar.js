@@ -51,7 +51,7 @@ function ExamplesNavbar() {
       ) : null}
       <Navbar className={"fixed-top " + navbarColor} color="info" expand="lg">
         <Container>
-          <UncontrolledDropdown className="button-dropdown">
+          {/* <UncontrolledDropdown className="button-dropdown">
             <DropdownToggle
               caret
               data-toggle="dropdown"
@@ -86,14 +86,16 @@ function ExamplesNavbar() {
                 One more separated link
               </DropdownItem>
             </DropdownMenu>
-          </UncontrolledDropdown>
+          </UncontrolledDropdown> */}
           <div className="navbar-translate">
-            <NavbarBrand
-              href="https://demos.creative-tim.com/now-ui-kit-react/index?ref=nukr-examples-navbar"
-              target="_blank"
-              id="navbar-brand"
-            >
-              Now Ui Kit
+            <NavbarBrand href="/index" id="navbar-brand">
+              <div className="content-center brand" style={{ height: "40px" }}>
+                <img
+                  alt="..."
+                  className="n-logo"
+                  src={require("assets/img/logo-TRIPLY.png").default}
+                ></img>
+              </div>
             </NavbarBrand>
             <UncontrolledTooltip target="#navbar-brand">
               Designed by Invision. Coded by Creative Tim
@@ -119,16 +121,18 @@ function ExamplesNavbar() {
           >
             <Nav navbar>
               <NavItem>
-                <NavLink to="/index" tag={Link}>
-                  Back to Kit
+                <NavLink href="/index">
+                  <i className="now-ui-icons business_briefcase-24"></i>
+                  <p>예약하기</p>
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/creativetimofficial/now-ui-kit-react/issues?ref=creativetim">
-                  Have an issue?
+                <NavLink href="/index">
+                  <i className="now-ui-icons ui-1_calendar-60"></i>
+                  <p>예약확인</p>
                 </NavLink>
               </NavItem>
-              <NavItem>
+              {/* <NavItem>
                 <NavLink
                   href="https://twitter.com/CreativeTim?ref=creativetim"
                   target="_blank"
@@ -166,7 +170,7 @@ function ExamplesNavbar() {
                 <UncontrolledTooltip target="#instagram-tooltip">
                   Follow us on Instagram
                 </UncontrolledTooltip>
-              </NavItem>
+              </NavItem> */}
             </Nav>
           </Collapse>
         </Container>

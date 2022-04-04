@@ -30,7 +30,7 @@ import NucleoIcons from "views/NucleoIcons.js";
 import LoginPage from "views/examples/LoginPage.js";
 import LandingPage from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
-import SignUp from "views/examples/SignUp";
+import SignupPage from "views/examples/SignupPage.js";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -44,7 +44,7 @@ ReactDOM.render(
         <Route path="/landing" render={(props) => <LandingPage {...props} />} />
         <Route path="/profile" render={(props) => <ProfilePage {...props} />} />
         <Route path="/login" render={(props) => <LoginPage {...props} />} />
-        <Route path="/signup" render={(props) => <SignUp {...props} />} />
+        <Route path="/signup" render={(props) => <SignupPage {...props} />} />
 
         <Redirect to="/index" />
         <Redirect from="/" to="/index" />

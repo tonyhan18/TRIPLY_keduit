@@ -19,11 +19,15 @@ import {
 // core components
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 import TransparentFooter from "components/Footers/TransparentFooter.js";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function LoginPage() {
   const [firstFocus, setFirstFocus] = React.useState(false);
   const [lastFocus, setLastFocus] = React.useState(false);
+  const [useremail, setUseremail] = React.useState("");
+  const [userpw, setUserpw] = React.useState("");
+  const history = useHistory();
+
   React.useEffect(() => {
     document.body.classList.add("login-page");
     document.body.classList.add("sidebar-collapse");
@@ -35,6 +39,12 @@ function LoginPage() {
       document.body.classList.remove("sidebar-collapse");
     };
   }, []);
+
+  const handleSubmit = (e) => {
+    //e.preventDefault();
+    console.log(useremail, userpw);
+    history.push("/index");
+  };
   return (
     <>
       <ExamplesNavbar />
@@ -50,15 +60,16 @@ function LoginPage() {
           <Container>
             <Col className="ml-auto mr-auto" md="4">
               <Card className="card-login card-plain">
-                <Form action="" className="form" method="">
+                <Form className="form" onSubmit={handleSubmit}>
                   <CardHeader className="text-center">
                     <div className="logo-container">
                       <img
                         alt="..."
-                        src={require("assets/img/now-logo.png").default}
+                        src={require("assets/img/logo-TRIPLY.png").default}
                       ></img>
                     </div>
                   </CardHeader>
+                  {/* Login FORM */}
                   <CardBody>
                     <InputGroup
                       className={
@@ -68,12 +79,15 @@ function LoginPage() {
                     >
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>
-                          <i className="now-ui-icons users_circle-08"></i>
+                          <i className="now-ui-icons ui-1_email-85"></i>
                         </InputGroupText>
                       </InputGroupAddon>
                       <Input
-                        placeholder="First Name..."
+                        name="useremail"
+                        placeholder="Your Email"
+                        value={useremail}
                         type="text"
+                        onChange={(e) => setUseremail(e.target.value)}
                         onFocus={() => setFirstFocus(true)}
                         onBlur={() => setFirstFocus(false)}
                       ></Input>
@@ -90,8 +104,11 @@ function LoginPage() {
                         </InputGroupText>
                       </InputGroupAddon>
                       <Input
-                        placeholder="Last Name..."
-                        type="text"
+                        name="userpw"
+                        placeholder="Your Password"
+                        value={userpw}
+                        type="password"
+                        onChange={(e) => setUserpw(e.target.value)}
                         onFocus={() => setLastFocus(true)}
                         onBlur={() => setLastFocus(false)}
                       ></Input>
@@ -102,19 +119,17 @@ function LoginPage() {
                       block
                       className="btn-round"
                       color="info"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
+                      type="submit"
+                      value="Submit"
+                      // onClick={(e) => e.preventDefault()}
+                      onClick={handleSubmit}
                       size="lg"
                     >
-                      Get Started
+                      로그인하기
                     </Button>
                     <div className="pull-left">
                       <h6>
-                        <Link
-                          to="/signup"
-                          className="link"
-                          onClick={(e) => e.preventDefault()}
-                        >
+                        <Link to="/signup" className="link">
                           회원가입
                         </Link>
                       </h6>

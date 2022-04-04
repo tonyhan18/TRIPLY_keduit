@@ -23,6 +23,7 @@ import NucleoIcons from "./index-sections/NucleoIcons.js";
 import CompleteExamples from "./index-sections/CompleteExamples.js";
 import Examples from "./index-sections/Examples.js";
 import Download from "./index-sections/Download.js";
+import Reservation from "components/Reservation.js";
 
 function Index() {
   React.useEffect(() => {
@@ -44,7 +45,7 @@ function Index() {
         <div className="main">
           {/* <Images /> */}
           {/* <BasicElements /> */}
-          <Navbars />
+          {/* <Navbars /> */}
           {/* <Tabs />
           <Pagination />
           <Notifications /> */}
@@ -56,8 +57,9 @@ function Index() {
           {/* <SignUp /> */}
           {/* <Examples />
           <Download /> */}
+          <Reservation />
         </div>
-        <DarkFooter />
+        {/* <DarkFooter /> */}
       </div>
     </>
   );

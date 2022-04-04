@@ -1,5 +1,6 @@
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar";
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 // reactstrap components
 import {
@@ -23,7 +24,17 @@ import {
 function SignUp() {
   const [firstFocus, setFirstFocus] = React.useState(false);
   const [lastFocus, setLastFocus] = React.useState(false);
-  const [emailFocus, setEmailFocus] = React.useState(false);
+  const [username, setUsername] = React.useState("");
+  const [useremail, setUseremail] = React.useState("");
+  const [userpw, setUserpw] = React.useState("");
+  const [usertel, setUsertel] = React.useState("");
+  const history = useHistory();
+
+  const handleSubmit = (e) => {
+    //e.preventDefault();
+    console.log(username, usertel, useremail, userpw);
+    history.push("/");
+  };
   return (
     <>
       <ExamplesNavbar />
@@ -34,16 +45,22 @@ function SignUp() {
             "url(" + require("assets/img/bg11.jpg").default + ")",
           backgroundSize: "cover",
           backgroundPosition: "top center",
-          minHeight: "700px",
+          minHeight: "100vh",
         }}
       >
         <Container>
           <Row>
             <Card className="card-signup" data-background-color="blue">
-              <Form action="" className="form" method="">
+              <Form className="form" onSubmit={handleSubmit}>
                 <CardHeader className="text-center">
+                  <div className="logo-container">
+                    <img
+                      alt="..."
+                      src={require("assets/img/logo-TRIPLY.png").default}
+                    ></img>
+                  </div>
                   <CardTitle className="title-up" tag="h3">
-                    Sign Up
+                    회원가입
                   </CardTitle>
                   <div className="social-line">
                     <Button
@@ -81,19 +98,23 @@ function SignUp() {
                   >
                     <InputGroupAddon addonType="prepend">
                       <InputGroupText>
-                        <i className="now-ui-icons users_circle-08"></i>
+                        <i className="now-ui-icons ui-1_email-85"></i>
                       </InputGroupText>
                     </InputGroupAddon>
                     <Input
-                      placeholder="First Name..."
-                      type="text"
+                      name="useremail"
+                      placeholder="Your Email"
+                      value={useremail}
+                      type="email"
+                      onChange={(e) => setUseremail(e.target.value)}
                       onFocus={() => setFirstFocus(true)}
                       onBlur={() => setFirstFocus(false)}
                     ></Input>
                   </InputGroup>
                   <InputGroup
                     className={
-                      "no-border" + (lastFocus ? " input-group-focus" : "")
+                      "no-border input-lg" +
+                      (lastFocus ? " input-group-focus" : "")
                     }
                   >
                     <InputGroupAddon addonType="prepend">
@@ -102,27 +123,55 @@ function SignUp() {
                       </InputGroupText>
                     </InputGroupAddon>
                     <Input
-                      placeholder="Last Name..."
-                      type="text"
+                      name="userpw"
+                      placeholder="Your Password"
+                      value={userpw}
+                      type="password"
+                      onChange={(e) => setUserpw(e.target.value)}
                       onFocus={() => setLastFocus(true)}
                       onBlur={() => setLastFocus(false)}
                     ></Input>
                   </InputGroup>
                   <InputGroup
                     className={
-                      "no-border" + (emailFocus ? " input-group-focus" : "")
+                      "no-border input-lg" +
+                      (lastFocus ? " input-group-focus" : "")
                     }
                   >
                     <InputGroupAddon addonType="prepend">
                       <InputGroupText>
-                        <i className="now-ui-icons ui-1_email-85"></i>
+                        <i className="now-ui-icons users_circle-08"></i>
                       </InputGroupText>
                     </InputGroupAddon>
                     <Input
-                      placeholder="Email..."
+                      name="username"
+                      placeholder="Your Name"
+                      value={username}
                       type="text"
-                      onFocus={() => setEmailFocus(true)}
-                      onBlur={() => setEmailFocus(false)}
+                      onChange={(e) => setUsername(e.target.value)}
+                      onFocus={() => setLastFocus(true)}
+                      onBlur={() => setLastFocus(false)}
+                    ></Input>
+                  </InputGroup>
+                  <InputGroup
+                    className={
+                      "no-border input-lg" +
+                      (lastFocus ? " input-group-focus" : "")
+                    }
+                  >
+                    <InputGroupAddon addonType="prepend">
+                      <InputGroupText>
+                        <i className="now-ui-icons tech_mobile"></i>
+                      </InputGroupText>
+                    </InputGroupAddon>
+                    <Input
+                      name="usertel"
+                      placeholder="Your phone"
+                      value={usertel}
+                      type="tel"
+                      onChange={(e) => setUsertel(e.target.value)}
+                      onFocus={() => setLastFocus(true)}
+                      onBlur={() => setLastFocus(false)}
                     ></Input>
                   </InputGroup>
                 </CardBody>
@@ -130,11 +179,13 @@ function SignUp() {
                   <Button
                     className="btn-neutral btn-round"
                     color="info"
-                    href="#pablo"
-                    onClick={(e) => e.preventDefault()}
+                    type="submit"
+                    value="Submit"
+                    // onClick={(e) => e.preventDefault()}
+                    onClick={handleSubmit}
                     size="lg"
                   >
-                    Get Started
+                    회원가입하기
                   </Button>
                 </CardFooter>
               </Form>
@@ -144,12 +195,12 @@ function SignUp() {
             <Button
               className="btn-round btn-white"
               color="default"
-              to="/login-page"
+              to="/login"
               outline
               size="lg"
               tag={Link}
             >
-              View Login Page
+              로그인하기
             </Button>
           </div>
         </Container>
