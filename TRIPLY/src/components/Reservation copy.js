@@ -16,7 +16,6 @@ import {
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 import LandingPageHeader from "components/Headers/LandingPageHeader.js";
 import DefaultFooter from "components/Footers/DefaultFooter.js";
-import styledComponents from "styled-components";
 
 function Reservation() {
   const [firstFocus, setFirstFocus] = React.useState(false);
@@ -33,7 +32,7 @@ function Reservation() {
     };
   }, []);
   return (
-    <ReservationBlock>
+    <>
       <div className="wrapper">
         <div className="section section-team text-center">
           <Container>
@@ -46,9 +45,9 @@ function Reservation() {
                       className="rounded-circle img-fluid img-raised"
                       src={require("assets/img/koreanair.png").default}
                     ></img>
-                    <h4 className="title text-black">서울 → 프랑스</h4>
+                    <h4 className="title">서울 → 프랑스</h4>
                     <p className="category text-info">대한항공</p>
-                    <p className="text-black">
+                    <p className="description">
                       [출발]
                       <br />
                       2022-03-01 02:05 <br />
@@ -83,7 +82,7 @@ function Reservation() {
                     ></img>
                     <h4 className="title">서울 → 프랑스</h4>
                     <p className="category text-info">대한항공</p>
-                    <p className="text-black">
+                    <p className="description">
                       [출발]
                       <br />
                       2022-03-01 02:05 <br />
@@ -118,7 +117,7 @@ function Reservation() {
                     ></img>
                     <h4 className="title">서울 → 프랑스</h4>
                     <p className="category text-info">대한항공</p>
-                    <p className="text-black">
+                    <p className="description">
                       [출발]
                       <br />
                       2022-03-01 02:05 <br />
@@ -148,14 +147,10 @@ function Reservation() {
             </div>
           </Container>
         </div>
+        <DefaultFooter />
       </div>
-    </ReservationBlock>
+    </>
   );
 }
-
-const ReservationBlock = styledComponents.div`
-  color:black;
-
-`;
 
 export default Reservation;

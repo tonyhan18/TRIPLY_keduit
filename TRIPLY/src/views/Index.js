@@ -24,8 +24,12 @@ import CompleteExamples from "./index-sections/CompleteExamples.js";
 import Examples from "./index-sections/Examples.js";
 import Download from "./index-sections/Download.js";
 import Reservation from "components/Reservation.js";
+import LoginContext from "contexts/login.js";
 
 function Index() {
+  // const { isLogin, useremail } = React.useContext(LoginContext);
+  // console.log(isLogin);
+  // console.log(useremail);
   React.useEffect(() => {
     document.body.classList.add("index-page");
     document.body.classList.add("sidebar-collapse");
@@ -57,7 +61,7 @@ function Index() {
           {/* <SignUp /> */}
           {/* <Examples />
           <Download /> */}
-          <Reservation />
+          {/* <Reservation /> */}
         </div>
         {/* <DarkFooter /> */}
       </div>

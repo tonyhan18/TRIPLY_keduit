@@ -31,11 +31,40 @@ import LoginPage from "views/examples/LoginPage.js";
 import LandingPage from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
 import SignupPage from "views/examples/SignupPage.js";
-import App from "App";
+import LoginContext from "contexts/login";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+const Router = () => {
+  const { isLogin, useremail } = React.useContext(LoginContext);
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Switch>
+          <Route path="/index" render={(props) => <Index {...props} />} />
+          <Route
+            path="/nucleo-icons"
+            render={(props) => <NucleoIcons {...props} />}
+          />
+          <Route
+            path="/landing"
+            render={(props) => <LandingPage {...props} />}
+          />
+          <Route
+            path="/profile"
+            render={(props) => <ProfilePage {...props} />}
+          />
+          <Route path="/login" render={(props) => <LoginPage {...props} />} />
+          <Route
+            exact
+            path="/signup"
+            render={(props) => <SignupPage {...props} />}
+          />
+
+          <Redirect to="/index" />
+          <Redirect from="/" to="/index" />
+        </Switch>
+      </Switch>
+    </BrowserRouter>
+  );
+};
+
+export default Router;

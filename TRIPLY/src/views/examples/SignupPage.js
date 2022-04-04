@@ -1,3 +1,5 @@
+import { Instance } from "api";
+import axios from "axios";
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar";
 import React from "react";
 import { useHistory } from "react-router-dom";
@@ -30,10 +32,32 @@ function SignUp() {
   const [usertel, setUsertel] = React.useState("");
   const history = useHistory();
 
-  const handleSubmit = (e) => {
-    //e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     console.log(username, usertel, useremail, userpw);
-    history.push("/");
+    // history.push("/index.js");
+    try {
+      const params = {
+        username,
+        usertel,
+        useremail,
+        userpw,
+      };
+      const { data } = await Instance.post("/users/create", params);
+      console.log(data);
+      setUsername("");
+      setUsertel("");
+      setUseremail("");
+      setUserpw("");
+      if (data.success === true) {
+        alert("가입성공!");
+        history.push("/login");
+      } else {
+        alert("가입실패!");
+      }
+    } catch (e) {
+      // history.push("/index.js");
+    }
   };
   return (
     <>
@@ -51,7 +75,7 @@ function SignUp() {
         <Container>
           <Row>
             <Card className="card-signup" data-background-color="blue">
-              <Form className="form" onSubmit={handleSubmit}>
+              <Form className="form">
                 <CardHeader className="text-center">
                   <div className="logo-container">
                     <img

@@ -1,3 +1,4 @@
+import LoginContext from "contexts/login";
 import React from "react";
 import { Link } from "react-router-dom";
 // reactstrap components
@@ -16,6 +17,7 @@ import {
 function IndexNavbar() {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
   const [collapseOpen, setCollapseOpen] = React.useState(false);
+  const { isLogin, useremail } = React.useContext(LoginContext);
   React.useEffect(() => {
     const updateNavbarColor = () => {
       if (
@@ -88,7 +90,7 @@ function IndexNavbar() {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/index">
+                <NavLink href="/profile">
                   <i className="now-ui-icons ui-1_calendar-60"></i>
                   <p>예약확인</p>
                 </NavLink>
@@ -118,16 +120,29 @@ function IndexNavbar() {
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown> */}
+
               <NavItem>
-                <Button
-                  className="nav-link btn-neutral"
-                  color="info"
-                  href="login"
-                  id="upgrade-to-pro"
-                >
-                  <i className="now-ui-icons objects_key-25 mr-1"></i>
-                  <p>로그인하기</p>
-                </Button>
+                {isLogin ? (
+                  <Button
+                    className="nav-link btn-neutral"
+                    color="info"
+                    href="profile"
+                    id="upgrade-to-pro"
+                  >
+                    <i className="now-ui-icons business_badge mr-1"></i>
+                    <p>내 페이지</p>
+                  </Button>
+                ) : (
+                  <Button
+                    className="nav-link btn-neutral"
+                    color="info"
+                    href="login"
+                    id="upgrade-to-pro"
+                  >
+                    <i className="now-ui-icons objects_key-25 mr-1"></i>
+                    <p>로그인하기</p>
+                  </Button>
+                )}
               </NavItem>
             </Nav>
           </Collapse>

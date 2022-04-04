@@ -1,13 +1,17 @@
 /*eslint-disable*/
+import Reservation from "components/Reservation";
 import Selection from "components/Selection";
+import LoginContext from "contexts/login";
 import React from "react";
 
 // reactstrap components
 import { Container } from "reactstrap";
+import styled from "styled-components";
 // core components
 
 function IndexHeader() {
   let pageHeader = React.createRef();
+  const { isLogin, useremail } = React.useContext(LoginContext);
 
   React.useEffect(() => {
     if (window.innerWidth > 991) {
@@ -46,6 +50,7 @@ function IndexHeader() {
 
           <h6 className="category category-absolute">
             <Selection />
+
             {/* Designed by{" "}
             <a href="http://invisionapp.com/?ref=creativetim" target="_blank">
             
@@ -68,10 +73,18 @@ function IndexHeader() {
             </a>
             . */}
           </h6>
+          <ReservationWrapper>
+            <Reservation />
+          </ReservationWrapper>
         </Container>
       </div>
     </>
   );
 }
+
+const ReservationWrapper = styled.div`
+  position: relative;
+  margin-top: 35rem;
+`;
 
 export default IndexHeader;

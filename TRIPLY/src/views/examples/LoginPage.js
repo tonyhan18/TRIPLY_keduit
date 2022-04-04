@@ -20,6 +20,9 @@ import {
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 import TransparentFooter from "components/Footers/TransparentFooter.js";
 import { Link, useHistory } from "react-router-dom";
+import axios from "axios";
+import { Instance } from "api";
+import LoginContext from "contexts/login";
 
 function LoginPage() {
   const [firstFocus, setFirstFocus] = React.useState(false);
@@ -27,6 +30,7 @@ function LoginPage() {
   const [useremail, setUseremail] = React.useState("");
   const [userpw, setUserpw] = React.useState("");
   const history = useHistory();
+  const { setIsLogin } = React.useContext(LoginContext);
 
   React.useEffect(() => {
     document.body.classList.add("login-page");
@@ -40,10 +44,32 @@ function LoginPage() {
     };
   }, []);
 
-  const handleSubmit = (e) => {
-    //e.preventDefault();
-    console.log(useremail, userpw);
-    history.push("/index");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    //console.log(useremail, userpw);
+
+    try {
+      const params = {
+        useremail,
+        userpw,
+      };
+      const { data } = await Instance.post("/users/login", params);
+      // localStorage.token = token;
+      const { success, token } = data;
+      //console.log(success, token);
+      if (data.success === true) {
+        setUseremail("");
+        setUserpw("");
+        //Instance.default.headers.common["Authorization"] = token;
+        setIsLogin({ isLogin: true, useremail: useremail });
+        // alert("멈춰!");
+        history.push("/");
+      } else {
+        alert("로그인 실패!");
+      }
+    } catch (e) {
+      alert("로그인 실패!!");
+    }
   };
   return (
     <>
@@ -60,7 +86,7 @@ function LoginPage() {
           <Container>
             <Col className="ml-auto mr-auto" md="4">
               <Card className="card-login card-plain">
-                <Form className="form" onSubmit={handleSubmit}>
+                <Form className="form">
                   <CardHeader className="text-center">
                     <div className="logo-container">
                       <img

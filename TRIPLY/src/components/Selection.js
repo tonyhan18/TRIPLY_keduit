@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 // react plugins that creates an input with a date picker
 import Datetime from "react-datetime";
+
 // reactstrap components
 import {
   Button,
@@ -20,6 +21,7 @@ import {
   NavLink,
   Nav,
 } from "reactstrap";
+import { flight } from "data/flight";
 
 const SelectionBlock = styled.div`
   display: flex;
@@ -56,7 +58,7 @@ const SelectionBlock = styled.div`
 const Selection = () => {
   const [modal1, setModal1] = React.useState(false);
   const [modal2, setModal2] = React.useState(false);
-  const [pills, setPills] = React.useState("1");
+  const [pills, setPills] = React.useState("0");
   const [start, setStart] = React.useState({});
   const [end, setEnd] = React.useState({});
 
@@ -158,8 +160,9 @@ const Selection = () => {
             <div className="datepicker-container">
               <FormGroup>
                 <Datetime
-                  timeFormat={false}
+                  name="end"
                   inputProps={{ placeholder: "도착날짜를 선택해주세요" }}
+                  dateFormat="YYYY년 MM월 DD일"
                   onChange={handleEnd}
                 />
               </FormGroup>
@@ -186,157 +189,26 @@ const Selection = () => {
           pills
           role="tablist"
         >
-          <NavItem className="nav-item">
-            <NavLink
-              className={pills === "1" ? "active nav-link" : "nav-link"}
-              onClick={(e) => {
-                e.preventDefault();
-                setPills("1");
-                handlePills();
-              }}
-            >
-              <img
-                alt="..."
-                className="rounded-circle img-raised"
-                src={require("assets/img/koreanair.png").default}
-              ></img>
-            </NavLink>
-          </NavItem>
-          <NavItem className="nav-item">
-            <NavLink
-              className={pills === "2" ? "active nav-link" : " nav-link"}
-              onClick={(e) => {
-                e.preventDefault();
-                setPills("2");
-              }}
-            >
-              <img
-                alt="..."
-                className="rounded-circle img-raised"
-                src={require("assets/img/asiana.png").default}
-              ></img>
-            </NavLink>
-          </NavItem>
-          <NavItem className="nav-item">
-            <NavLink
-              className={pills === "3" ? "active nav-link" : " nav-link"}
-              onClick={(e) => {
-                e.preventDefault();
-                setPills("3");
-              }}
-            >
-              <img
-                alt="..."
-                className="rounded-circle img-raised"
-                src={require("assets/img/jinair.jpeg").default}
-              ></img>
-            </NavLink>
-          </NavItem>
-          <NavItem className="nav-item">
-            <NavLink
-              className={pills === "4" ? "active nav-link" : " nav-link"}
-              onClick={(e) => {
-                e.preventDefault();
-                setPills("4");
-              }}
-            >
-              <img
-                alt="..."
-                className="rounded-circle img-raised"
-                src={require("assets/img/jejuair.png").default}
-              ></img>
-            </NavLink>
-          </NavItem>
-          <NavItem className="nav-item">
-            <NavLink
-              className={pills === "5" ? "active nav-link" : " nav-link"}
-              onClick={(e) => {
-                e.preventDefault();
-                setPills("5");
-              }}
-            >
-              <img
-                alt="..."
-                className="rounded-circle img-raised"
-                src={require("assets/img/airbusan.png").default}
-              ></img>
-            </NavLink>
-          </NavItem>
-          <NavItem className="nav-item">
-            <NavLink
-              className={pills === "6" ? "active nav-link" : " nav-link"}
-              onClick={(e) => {
-                e.preventDefault();
-                setPills("6");
-              }}
-            >
-              <img
-                alt="..."
-                className="rounded-circle img-raised"
-                src={require("assets/img/tway.jpeg").default}
-              ></img>
-            </NavLink>
-          </NavItem>
-          <NavItem className="nav-item">
-            <NavLink
-              className={pills === "7" ? "active nav-link" : " nav-link"}
-              onClick={(e) => {
-                e.preventDefault();
-                setPills("7");
-              }}
-            >
-              <img
-                alt="..."
-                className="rounded-circle img-raised"
-                src={require("assets/img/eastar.png").default}
-              ></img>
-            </NavLink>
-          </NavItem>
-          <NavItem className="nav-item">
-            <NavLink
-              className={pills === "8" ? "active nav-link" : " nav-link"}
-              onClick={(e) => {
-                e.preventDefault();
-                setPills("8");
-              }}
-            >
-              <img
-                alt="..."
-                className="rounded-circle img-raised"
-                src={require("assets/img/airseoul.png").default}
-              ></img>
-            </NavLink>
-          </NavItem>
-          <NavItem className="nav-item">
-            <NavLink
-              className={pills === "9" ? "active nav-link" : " nav-link"}
-              onClick={(e) => {
-                e.preventDefault();
-                setPills("9");
-              }}
-            >
-              <img
-                alt="..."
-                className="rounded-circle img-raised"
-                src={require("assets/img/airpremier.png").default}
-              ></img>
-            </NavLink>
-          </NavItem>
-          <NavItem className="nav-item">
-            <NavLink
-              className={pills === "10" ? "active nav-link" : " nav-link"}
-              onClick={(e) => {
-                e.preventDefault();
-                setPills("10");
-              }}
-            >
-              <img
-                alt="..."
-                className="rounded-circle img-raised"
-                src={require("assets/img/aerok.png").default}
-              ></img>
-            </NavLink>
-          </NavItem>
+          {flight.map(({ url }, index) => (
+            <NavItem key={index} className="nav-item">
+              <NavLink
+                className={
+                  pills === `"${index}"` ? "active nav-link" : "nav-link"
+                }
+                onClick={(e) => {
+                  e.preventDefault();
+                  setPills(`"${index}"`);
+                  handlePills();
+                }}
+              >
+                <img
+                  alt="..."
+                  className="rounded-circle img-raised"
+                  src={require("../../src/assets/img/" + url + ".png").default}
+                ></img>
+              </NavLink>
+            </NavItem>
+          ))}
         </Nav>
       </Col>
       {/* <div className="section section-javascript" id="javascriptComponents">

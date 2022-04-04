@@ -127,7 +127,7 @@ function ExamplesNavbar() {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/index">
+                <NavLink href="/profile">
                   <i className="now-ui-icons ui-1_calendar-60"></i>
                   <p>예약확인</p>
                 </NavLink>
