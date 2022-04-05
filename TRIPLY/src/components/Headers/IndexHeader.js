@@ -1,4 +1,5 @@
 /*eslint-disable*/
+import { Instance } from "api";
 import Reservation from "components/Reservation";
 import Selection from "components/Selection";
 import LoginContext from "contexts/login";
@@ -12,6 +13,9 @@ import styled from "styled-components";
 function IndexHeader() {
   let pageHeader = React.createRef();
   const { isLogin, useremail } = React.useContext(LoginContext);
+  const [flight, setFlight] = React.useState([]);
+  const [start, setStart] = React.useState({});
+  const [end, setEnd] = React.useState({});
 
   React.useEffect(() => {
     if (window.innerWidth > 991) {
@@ -26,6 +30,27 @@ function IndexHeader() {
       };
     }
   });
+
+  const searchFlight = async (deptime, arrtime, airline, start, end) => {
+    setStart(start);
+    setEnd(end);
+    try {
+      const params = {
+        deptime: deptime,
+        arrtime: arrtime,
+        airline: airline,
+        useremail: "ourclub7279@gmail.com",
+      };
+      const { data } = await Instance.post("/flight/search", params);
+      if (!data.success) {
+        alert("정보가 없습니다");
+      } else {
+        setFlight(data.flight);
+      }
+    } catch (e) {
+      console.log("실패!");
+    }
+  };
 
   return (
     <>
@@ -49,7 +74,7 @@ function IndexHeader() {
           </div>
 
           <h6 className="category category-absolute">
-            <Selection />
+            <Selection searchFlight={searchFlight} />
 
             {/* Designed by{" "}
             <a href="http://invisionapp.com/?ref=creativetim" target="_blank">
@@ -73,9 +98,13 @@ function IndexHeader() {
             </a>
             . */}
           </h6>
-          <ReservationWrapper>
-            <Reservation />
-          </ReservationWrapper>
+          {flight.length != 0 ? (
+            <ReservationWrapper>
+              <Reservation flight={flight} start={start} end={end} />
+            </ReservationWrapper>
+          ) : (
+            <></>
+          )}
         </Container>
       </div>
     </>

@@ -43,9 +43,35 @@
   }
 
   .section-team {
-    .team .team-player img {
-      max-width: 100px;
+    display: flex;
+    display: block;
+    .team {
+      display: flex;
+      display: block;
+      .team-all {
+        display: flex;
+        // width: 300px;
+
+        .team-each {
+          display: flex;
+          width: 200px;
+          .team-player {
+            width: 200px;
+            background-color: royalblue;
+          }
+        }
+      }
     }
+
+    // .team-all {
+    //   .team-each {
+    //     //background-color: royalblue;
+    //     margin-left: 15px;
+    //   }
+    // }
+    // .team .team-player img {
+    //   max-width: 80px;
+    // }
 
     .team-player {
       margin-bottom: 15px;

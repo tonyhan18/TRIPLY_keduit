@@ -55,7 +55,7 @@ const SelectionBlock = styled.div`
   }
 `;
 
-const Selection = () => {
+const Selection = ({ searchFlight }) => {
   const [modal1, setModal1] = React.useState(false);
   const [modal2, setModal2] = React.useState(false);
   const [pills, setPills] = React.useState("0");
@@ -80,6 +80,26 @@ const Selection = () => {
         return "sunday";
     }
   };
+  const checkAirline = (airline) => {
+    switch (airline) {
+      case 0:
+        return "KAL";
+      case 1:
+        return "AAR";
+      case 2:
+        return "JNA";
+      case 3:
+        return "JJA";
+      case 4:
+        return null;
+      case 5:
+        return null;
+      case 6:
+        return null;
+      case 7:
+        return null;
+    }
+  };
   const handleStart = (e) => {
     const date = e._d.getDate();
     const hour = e._d.getHours();
@@ -98,7 +118,6 @@ const Selection = () => {
       hour: hour,
       min: min,
     });
-    console.log(start);
   };
 
   const handleEnd = (e) => {
@@ -118,10 +137,14 @@ const Selection = () => {
       hour: hour,
       min: min,
     });
-    console.log(end);
   };
 
-  const handlePills = (e) => {};
+  const handlePills = (index) => {
+    const deptime = `${start.hour}:${start.min}`;
+    const arrtime = `${end.hour}:${end.min}`;
+    const airline = checkAirline(index);
+    searchFlight(deptime, arrtime, airline, start, end);
+  };
   return (
     <SelectionBlock>
       <Col md="3" className="start">
@@ -198,7 +221,7 @@ const Selection = () => {
                 onClick={(e) => {
                   e.preventDefault();
                   setPills(`"${index}"`);
-                  handlePills();
+                  handlePills(index);
                 }}
               >
                 <img
