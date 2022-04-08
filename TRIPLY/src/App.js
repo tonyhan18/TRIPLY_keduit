@@ -1,7 +1,7 @@
 import Router from "./Router";
 import LoginContext from "./contexts/login";
 import { useState } from "react";
-import { Instance } from "api";
+// import { Instance } from "api";
 
 function App() {
   // useContext에 로그인정보 담기

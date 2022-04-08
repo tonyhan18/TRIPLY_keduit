@@ -16,7 +16,7 @@
 
 */
 import React from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 // styles for this kit
@@ -31,10 +31,10 @@ import LoginPage from "views/examples/LoginPage.js";
 import LandingPage from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
 import SignupPage from "views/examples/SignupPage.js";
-import LoginContext from "contexts/login";
+// import LoginContext from "contexts/login";
 
 const Router = () => {
-  const { isLogin, useremail } = React.useContext(LoginContext);
+  // const { isLogin, useremail } = React.useContext(LoginContext);
   return (
     <BrowserRouter>
       <Switch>

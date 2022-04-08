@@ -20,7 +20,6 @@ import {
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 import TransparentFooter from "components/Footers/TransparentFooter.js";
 import { Link, useHistory } from "react-router-dom";
-import axios from "axios";
 import { Instance } from "api";
 import LoginContext from "contexts/login";
 
@@ -55,7 +54,6 @@ function LoginPage() {
       };
       const { data } = await Instance.post("/users/login", params);
       // localStorage.token = token;
-      const { success, token } = data;
       //console.log(success, token);
       if (data.success === true) {
         setUseremail("");

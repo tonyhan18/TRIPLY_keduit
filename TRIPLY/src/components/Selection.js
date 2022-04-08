@@ -6,17 +6,17 @@ import Datetime from "react-datetime";
 
 // reactstrap components
 import {
-  Button,
+  // Button,
   FormGroup,
-  Container,
-  Modal,
-  ModalBody,
+  // Container,
+  // Modal,
+  // ModalBody,
   Row,
   Col,
-  UncontrolledTooltip,
-  PopoverBody,
-  PopoverHeader,
-  UncontrolledPopover,
+  // UncontrolledTooltip,
+  // PopoverBody,
+  // PopoverHeader,
+  // UncontrolledPopover,
   NavItem,
   NavLink,
   Nav,
@@ -56,8 +56,6 @@ const SelectionBlock = styled.div`
 `;
 
 const Selection = ({ searchFlight }) => {
-  const [modal1, setModal1] = React.useState(false);
-  const [modal2, setModal2] = React.useState(false);
   const [pills, setPills] = React.useState("0");
   const [start, setStart] = React.useState({});
   const [end, setEnd] = React.useState({});
@@ -78,6 +76,8 @@ const Selection = ({ searchFlight }) => {
         return "saturday";
       case 6:
         return "sunday";
+      default:
+        return null;
     }
   };
   const checkAirline = (airline) => {
@@ -97,6 +97,8 @@ const Selection = ({ searchFlight }) => {
       case 6:
         return null;
       case 7:
+        return null;
+      default:
         return null;
     }
   };

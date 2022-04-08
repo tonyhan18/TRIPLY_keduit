@@ -1,5 +1,4 @@
 import { Instance } from "api";
-import axios from "axios";
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar";
 import React from "react";
 import { useHistory } from "react-router-dom";

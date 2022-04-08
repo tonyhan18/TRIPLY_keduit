@@ -3,25 +3,25 @@ import React from "react";
 // reactstrap components
 import {
   Button,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Container,
-  Row,
-  Col,
+  // Input,
+  // InputGroupAddon,
+  // InputGroupText,
+  // InputGroup,
+  // Container,
+  // Row,
+  // Col,
 } from "reactstrap";
 
 // core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
-import LandingPageHeader from "components/Headers/LandingPageHeader.js";
-import DefaultFooter from "components/Footers/DefaultFooter.js";
+// import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
+// import LandingPageHeader from "components/Headers/LandingPageHeader.js";
+// import DefaultFooter from "components/Footers/DefaultFooter.js";
 import styled from "styled-components";
 import { Instance } from "api";
 
 function Reservation({ flight, start, end }) {
-  const [firstFocus, setFirstFocus] = React.useState(false);
-  const [lastFocus, setLastFocus] = React.useState(false);
+  // const [firstFocus, setFirstFocus] = React.useState(false);
+  // const [lastFocus, setLastFocus] = React.useState(false);
   React.useEffect(() => {
     document.body.classList.add("landing-page");
     document.body.classList.add("sidebar-collapse");
@@ -52,6 +52,8 @@ function Reservation({ flight, start, end }) {
         return null;
       case 7:
         return null;
+      default:
+        return null;
     }
   };
   const handleReserve = async (
@@ -61,7 +63,6 @@ function Reservation({ flight, start, end }) {
     to,
     start,
     end,
-    gatenum,
     price
   ) => {
     console.log(airline);
@@ -102,6 +103,7 @@ function Reservation({ flight, start, end }) {
             <div key={id} className="body-content">
               <div className="body-img">
                 <img
+                  alt="..."
                   className="circle-img"
                   src={
                     require("../../src/assets/img/" +
@@ -120,14 +122,14 @@ function Reservation({ flight, start, end }) {
                 <p className="">
                   [출발]
                   <br />
-                  {start.year}-{start.monmth}-{start.date} {start.hour}:
+                  {start.year}-{start.month}-{start.date} {start.hour}:
                   {start.min} <br />
                   {start.day}
                   <br />
                   <br />
                   [도착]
                   <br />
-                  {end.year}-{end.monmth}-{end.date} {end.hour}:{end.min} <br />
+                  {end.year}-{end.month}-{end.date} {end.hour}:{end.min} <br />
                   {end.day}
                   <br />
                 </p>
@@ -137,7 +139,6 @@ function Reservation({ flight, start, end }) {
                   color="info"
                   type="submit"
                   value="Submit"
-                  // onClick={(e) => e.preventDefault()}
                   onClick={(e) =>
                     handleReserve(
                       flight,
@@ -159,78 +160,6 @@ function Reservation({ flight, start, end }) {
           )
         )}
       </div>
-
-      {/* <div className="landing-page">
-        <div className="section section-team text-center">
-          <Container>
-            <div className="team">
-              <Row className="team-all">
-                {flight.map(
-                  (
-                    {
-                      airline,
-                      arrtime,
-                      deptime,
-                      flight,
-                      from,
-                      gatenum,
-                      price,
-                      to,
-                    },
-                    id
-                  ) => (
-                    <Col key={id} md="4" className="team-each">
-                      <div className="team-player">
-                        <img
-                          alt="..."
-                          className="rounded-circle img-raised"
-                          src={
-                            require("../../src/assets/img/" +
-                              checkAirline(airline) +
-                              ".png").default
-                          }
-                        ></img>
-                        <h4 className="title text-black">
-                          {from} → {to}
-                        </h4>
-                        <p className="category text-info">{flight}</p>
-                        <p>{gatenum}</p>
-                        <p>{price}</p>
-                        <p className="text-black">
-                          [출발]
-                          <br />
-                          {start.year}-{start.monmth}-{start.date} {start.hour}:
-                          {start.min} <br />
-                          {start.day}
-                          <br />
-                          <br />
-                          [도착]
-                          <br />
-                          {end.year}-{end.monmth}-{end.date} {end.hour}:
-                          {end.min} <br />
-                          {end.day}
-                          <br />
-                        </p>
-                        <Button
-                          block
-                          className="btn-round"
-                          color="info"
-                          type="submit"
-                          value="Submit"
-                          // onClick={(e) => e.preventDefault()}
-                          size="lg"
-                        >
-                          예약하기
-                        </Button>
-                      </div>
-                    </Col>
-                  )
-                )}
-              </Row>
-            </div>
-          </Container>
-        </div>
-      </div> */}
     </ReservationBlock>
   );
 }

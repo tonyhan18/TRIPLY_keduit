@@ -1,6 +1,6 @@
 import LoginContext from "contexts/login";
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 // reactstrap components
 import {
   Button,
@@ -17,7 +17,7 @@ import {
 function IndexNavbar() {
   const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
   const [collapseOpen, setCollapseOpen] = React.useState(false);
-  const { isLogin, useremail } = React.useContext(LoginContext);
+  const { isLogin } = React.useContext(LoginContext);
   React.useEffect(() => {
     const updateNavbarColor = () => {
       if (
