@@ -140,16 +140,7 @@ function Reservation({ flight, start, end }) {
                   type="submit"
                   value="Submit"
                   onClick={(e) =>
-                    handleReserve(
-                      flight,
-                      airline,
-                      from,
-                      to,
-                      start,
-                      end,
-                      gatenum,
-                      price
-                    )
+                    handleReserve(flight, airline, from, to, start, end, price)
                   }
                   size="lg"
                 >

@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  nodeapp:
+    image: tonyhan18/express:1.0
+    ports:
+      - 5000:5000
+    deploy:
+      replicas: 6
+      restart_policy:
+        max_attempts: 3
+        condition: on-failure
+      update_config:
+        parallelism: 3
+        delay: 10s
+      placement:
+        constraints: [node.role == worker]
+    networks:
+      - balance
+
+  proxy:
+    image: tonyhan18/react:1.0
+    ports:
+      - 80:80
+    depends_on:
+      - nodeapp
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - balance
+
+networks:
+  balance:
+    driver: overlay

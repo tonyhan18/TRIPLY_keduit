@@ -23,7 +23,7 @@ router.post("/create", async function (req, res) {
     price,
   } = req.body;
   if (postUserCheck(useremail)) {
-    console.log(deptime);
+    console.log(price);
     // 	const query2 = `INSERT INTO tb_user(useremail, userpw, username, usertel)
     // VALUES('${useremail}', '${userpw}','${username}', '${usertel}')`;
     // const query = `INSERT INTO tb_book( useremail, flight, airlineid, username, from, to, depdate, arrdate, deptime, arrtime, price) VALUES ('apdlf@gmaile.com', '${flight}', '${airlineid}', '홍길동', '${from}', '${to}', '${depdate}', '${arrdate}', '${deptime}', '${arrdate}', '${price}');`;
