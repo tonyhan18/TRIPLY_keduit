@@ -42,7 +42,7 @@ manager에서 docker swarm init 시 나오는 토큰 값을 가지고<br />
 kvm1, kvm2 에 입력후 Enter<br />
 
 ```bash
-cd client
+cd TRIPLY
 npm install
 npm run build
 docker build -f Dockerfile.dev -t tonyhan18/react:1.0 .
