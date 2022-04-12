@@ -13,7 +13,7 @@
 [(22상)Daisy_pdf.pdf]((22상)Daisy_pdf.pdf)
 
 
-<iframe width="640" height="360" src="./(22상)Daisy_시연영상.mp4" frameborder="0" gesture="media" allowfullscreen=""></iframe>
+<iframe width="640" height="360" src="(22상)Daisy_시연영상.mp4" frameborder="0" gesture="media" allowfullscreen=""></iframe>
 
 
 # 실행결과
