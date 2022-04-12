@@ -12,12 +12,7 @@
 
 [(22상)Daisy_pdf.pdf]((22상)Daisy_pdf.pdf)
 
-<iframe id="video" width="640px" height="640px" src="./(22상)Daisy_시연영상.mp4" frameborder="0">
-</iframe>
-
-<video width="100%" height="100%" controls="controls">
-  <source src="./(22상)Daisy_시연영상.mp4" type="video/mp4">
-</video>
+[(22상)Daisy_pdf.mp4]((22상)Daisy_pdf.mp4)
 
 
 # 실행결과
