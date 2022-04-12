@@ -8,6 +8,14 @@
 
 사실상 위 프로젝트에서 client와 server만 현재 폴더로 바꾸어준 것이라고 보면 된다.
 
+발표자료(문서/영상)
+
+[(22상)Daisy_pdf.pdf]((22상)Daisy_pdf.pdf)
+
+
+<iframe width="640" height="360" src="./(22상)Daisy_시연영상.mp4" frameborder="0" gesture="media" allowfullscreen=""></iframe>
+
+
 # 실행결과
 
 ![final.gif](final.gif)
