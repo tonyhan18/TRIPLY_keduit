@@ -12,7 +12,7 @@
 
 [(22상)Daisy_pdf.pdf]((22상)Daisy_pdf.pdf)
 
-[(22상)Daisy_pdf.mp4]((22상)Daisy_pdf.mp4)
+[(22상)Daisy_시연영상.mp4]((22상)Daisy_시연영상.mp4)
 
 
 # 실행결과
